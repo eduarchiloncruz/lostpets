@@ -1,4 +1,3 @@
-# CoderPythonProjectFinal
 Proyecto Final de Python
 
 # Autor:
