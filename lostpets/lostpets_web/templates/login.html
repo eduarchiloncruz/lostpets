@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+LOST PETS - Login
+{% endblock %}
+
+{% block content %}
+<div class="text-center my-5">
+    <form method="POST" class="col-md-12">
+        {% csrf_token %}
+        <table class="mx-auto w-auto text-start">
+            {{ form.as_table }}
+        </table>
+        <button type="submit" class="btn btn-primary mt-3">Ingresar Uusuario</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+LOST PETS - Inicio
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row mb-4">
+        <!-- Card 1: Imagen a la derecha -->
+        <div class="col-md-12">
+            <div class="card mb-3 border border-0">
+                <div class="row g-3">
+                    <div class="col-md-8 d-flex align-items-center">
+                        <div class="card-body">
+                            <h2 class="card-title">Encontramos a tu mascota</h2>
+                            <p class="card-text">Sabemos lo importante que es tu mascota para ti. Nuestra comunidad
+                                está aquí para ayudarte a reencontrarte con ella. Publica una alerta y revisa las
+                                publicaciones de animales encontrados.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="https://cdn.aarp.net/content/dam/aarpe/es/home/hogar-familia/casa-jardin/info-2019/compartir-con-mascota-beneficios-para-salud/_jcr_content/root/container_main/container_body_main/container_body1/container_body_cf/container_image/articlecontentfragment/cfimage.coreimg.50.932.jpeg/content/dam/aarp/health/healthy-living/2019/03/1140-woman-and-dog-esp.jpg"
+                            class="img-fluid rounded-end" style="width: 100%; height: 500px; object-fit: cover;"
+                            alt="Mascota encontrada">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="my-3"></span>
+
+        <!-- Card 2: Imagen a la izquierda -->
+        <div class="col-md-12">
+            <div class="card mb-3 border border-0">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <img src="https://www.fundacionfass.org/wp-content/uploads/2022/10/Beneficios-de-las-mascotas-en-las-personas-mayores-2048x1365.jpg"
+                            class="img-fluid rounded-start" style="width: 100%; height: 500px; object-fit: cover;"
+                            alt="Mascota perdida">
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center">
+                        <div class="card-body">
+                            <h2 class="card-title">Ayuda a encontrar a una mascota</h2>
+                            <p class="card-text">Si has visto una mascota perdida, publica una foto y su ubicación.
+                                Juntos podemos ayudar a reunir a las mascotas con sus familias.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

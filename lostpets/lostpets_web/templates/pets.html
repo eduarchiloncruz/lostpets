@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+LOST PETS - Pets
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center">Mascotas perdidas</h1>
+    <br>
+
+    {% if pets %}
+    <div class="row">
+        {% for pet in pets %}
+        <div class="col-md-4 mb-4">
+            <div class="card" style="width: 100%;">
+                <img src="{{ pet.image.url }}" class="card-img-top" alt="{{ pet.name }}"
+                    style="height: 300px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pet.name }}</h5>
+                    <p class="card-text">{{ pet.content|slice:":40" }}{% if pet.content|length > 40 %}...{% endif %}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ pet.published_date }}</li>
+                    <li class="list-group-item">Dueño: {{ pet.owner }}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{% url 'lostpets_web:petdetail' pk=pet.pk %}" class="card-link">Ver más</a>
+                    {% if request.user == pet.owner or request.user.is_staff %}
+                    <a href="{% url 'lostpets_web:pet_update' pk=pet.pk %}" class="card-link">Editar</a>
+                    <a class="card-link" style="cursor: pointer;" data-bs-toggle="modal"
+                        data-bs-target="#avatarDeleteModal{{ pet.pk }}">Eliminar</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% if request.user == pet.owner or request.user.is_staff %}
+        <div class="modal fade" id="avatarDeleteModal{{ pet.pk }}" tabindex="-1"
+            aria-labelledby="avatarDeleteModal{{ pet.pk }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="avatarDeleteModal{{ pet.pk }}">
+                            ¿Estás seguro de que deseas eliminar a "{{ pet.name }}"?
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- Aquí va el formulario con el método POST -->
+                        <form method="POST" action="{% url 'lostpets_web:pet_delete' pk=pet.pk %}">
+                            {% csrf_token %}
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">No, Salir</button>
+                                <button type="submit" class="btn btn-danger">Si, Eliminar</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center">No hay mascotas perdidas en este momento.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

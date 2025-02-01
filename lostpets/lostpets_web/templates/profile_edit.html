@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+LOST PETS - Profile
+{% endblock %}
+
+{% block content %}
+<div class="text-center my-5">
+    <h1 class="text-center">Perfil del Usuario</h1>
+    <form method="POST" class="col-md-12">
+        {% csrf_token %}
+        <table class="mx-auto w-auto text-start">
+            {{ form.as_table }}
+        </table>
+        <button type="submit" class="btn btn-primary mt-3">Actualizar Perfil</button>
+    </form>
+
+</div>
+
+
+{% endblock %}

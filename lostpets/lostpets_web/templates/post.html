@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+LOST PETS - Post
+{% endblock %}
+
+{% block content %}
+<div class="text-center my-5">
+    <h1 class="text-center">Publicar mascotas</h1>
+    <br>
+    <form method="post" enctype="multipart/form-data" class="col-md-12">
+        {% csrf_token %}
+        <table class="mx-auto w-auto text-start">
+            {{ form.as_table }}
+        </table>
+        </br>
+        <button type="submit" class="btn btn-primary mt-3">Publicar mascota</button>
+        <a href="{% url 'lostpets_web:home' %}" class="btn btn-warning mt-3">Cancelar</a>
+    </form>
+</div>
+
+
+{% endblock %}
